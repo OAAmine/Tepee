@@ -1,0 +1,170 @@
+html{
+  font-size: 12px;
+  max-height: 100vh;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+}
+h3{
+  text-transform: uppercase;
+  font-size: 160%;
+}
+
+
+
+*{outline: none;}
+.tout{
+    display: flex;
+    flex-direction: row;
+    /* margin-bottom: 200px; */
+}
+.logo img{
+     width: auto;
+     height: 70px;
+}
+.cote-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+    width:50%;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.cote-form h1{
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.cote-form form{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.condition{
+    width: 500px;
+}
+a{
+    text-decoration: none;
+    color:#4FC3F7 ;
+}
+.cote-form input[type="text"],.cote-form input[type="password"],.cote-form input[type="email"]{
+    border:3px solid #4FC3F7;
+    border-radius: 30px;
+    padding: 5px 10px;
+    width: 350px;
+    transition: 0.35s;
+    font-size: 17px
+}
+
+
+.cote-form input[type="text"]:hover,
+.cote-form input[type="password"]:hover,
+.cote-form input[type="email"]:hover{
+transform: scale(1.02);
+}
+
+.cote-form input[type="submit"]{ 
+    border:3px solid #4FC3F7;
+    border-radius: 30px;
+    text-align: center;
+    padding: 14px 55px;
+    transition: 0.35s;
+    font-size: 17px;
+    background-color: #4FC3F7;
+
+}
+
+::placeholder{
+    font-size: 18px;
+}
+.image{
+  width : 50%
+}
+.image img{
+  width: 100%;
+max-height: 100vh;
+}
+
+
+
+/*---------------------------------------------etudiant enseignant buttons------------------------------*/
+.choose{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+}
+.ou{
+  font-size: 20px;
+  font-weight: bold;
+  background-color: rgb(243, 243, 243);
+  box-shadow: 4px 4px 4px rgba(0, 217, 255);
+  border-radius: 30px;
+  padding: 5px 10px;
+
+}
+
+
+.cc-selector{
+  margin-bottom: 25px;
+}
+.cc-selector input{
+  margin:0;padding:0;
+  -webkit-appearance:none;
+     -moz-appearance:none;
+          appearance:none;
+}
+.cc-selector label{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.etudiant{
+  background-image:url(img/student_illustration.svg);
+  border: 2px solid rgb(197, 197, 197);
+
+}
+.enseignant{
+  background-image:url(img/teacher_illustration.svg);
+  background-size: cover;
+  border: 2px solid rgb(197, 197, 197);
+
+}
+
+.cc-selector input:active +.drinkcard-cc{opacity: .9;}
+.cc-selector input:checked +.drinkcard-cc{
+  
+  background-color: rgba(0, 217, 255, 0.678);
+  -webkit-filter: none;
+     -moz-filter: none;
+          filter: none;
+}
+.drinkcard-cc{
+  cursor:pointer;
+  background-size:contain;
+  background-repeat:no-repeat;
+  display: inline-block;
+  width:140px;height:110px;
+  -webkit-transition: all 100ms ease-in;
+     -moz-transition: all 100ms ease-in;
+          transition: all 100ms ease-in;
+  -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+     -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+          filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.drinkcard-cc:hover{
+  -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+     -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+          filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+/* Extras */
+a:visited{color:rgb(0, 225, 255)}
+a{color:#444;text-decoration:none;}
+p{margin-bottom:.3em;}
+/*----------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------*/
+

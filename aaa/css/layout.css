@@ -1,0 +1,275 @@
+.header-plus-image{
+    width: 100%;
+    height:750px;
+}
+.header{
+  
+    width: 100%;
+    height:85%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.img-header{
+    position: relative;
+}
+.img-header img {
+    height: 100%;
+    width: 100% ;
+}
+.navbar-backg-color{
+  position: fixed;
+    width: 100%;
+    height: 80px;
+    background-color:white;
+}
+.navbar{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}
+.logo img{
+    width: 75px;
+    height: 50px;
+    margin-top: 20px;
+    
+}
+.navbar-right{
+    width: 35%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+/* ------------------- NAVBAR LINKS ANIMATION -------------------*/
+.navbar-right a::after{
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: black;
+  transition: width .3s;
+}
+.navbar-right a:hover::after{
+  width: 100%;
+  transition: width .3s;
+}
+/* -------------------  -------------------*/
+/* ------------------- NAVBAR-FIXED-SCROLLING -------------------*/
+.navbar-backg-color.stikky{
+  height: 70px;
+  background-color: #BEBDB6;
+  transition: 0.3s;
+}
+.navbar-right.stikky  a{
+  color: white;
+}
+.navbar-right.stikky a::after{
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: #202020;
+  transition: width .3s;
+}
+.navbar-right.stikky a:hover::after{
+  width: 100%;
+  transition: width .3s;
+}
+/* -------------------  -------------------*/
+
+.presentation{  
+    width: 45%;
+    height: 60%;
+    margin-top: 160px;
+    margin-left: 70px;
+}
+.presentation h1{
+    font-size: 50px;
+    color: white;
+}
+
+
+
+/*second and third page*/
+
+.secondpage{
+  Width:85%;
+  Margin:auto;
+}
+body {
+    background-color: white;
+  }
+  
+  h1 {
+    color: black;
+    text-align: center;
+    font-size: 50px;
+  }
+  
+ .para {
+    font-family: nunito;
+    font-size: 20px;
+    text-align: center;
+  }
+  .secondpage img{
+    width:500px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+.thirdpage{
+  background-color:rgb(239, 239, 248); 
+}
+.thirdpage h1{
+  padding-top: 50px;
+  margin-bottom: 100px;
+}
+.thirdpage img{
+width: 300px;
+}
+.thirdpage h2{
+  font-size: 30px;
+}
+
+.c0{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;  
+
+}
+.c1{
+  margin-left: 20%;
+}
+
+.c{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  margin-top: 10%;
+}
+.c2{
+  margin-right: 20%;
+  margin-top: 3%;
+}
+.c3{
+  margin-bottom: -5%;
+}
+.c4{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+
+}
+
+.c5{
+  margin-left: 20%;
+  margin-top: 2%;
+}
+.c6{
+  margin-bottom: -5%;
+}
+.c10{
+  margin-bottom: 10%;
+}
+.c7{
+  margin-top: 5%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+.c8{
+  margin-right: 20%;
+
+  
+}
+.c9{
+  padding-top: 50px;
+  margin-bottom: -5%; 
+}
+.c11{
+  margin-top: 5%;
+}
+
+
+/*footer*/
+.before{
+    margin:0;
+    width: 100% ;
+    height: 600px;
+
+}
+
+.footer{
+    background-image: url(/imgs/footer.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:550px;
+    margin:0;
+    font-family: nunito;
+
+}
+.list{ 
+    
+    flex-direction: column;
+    text-align: center;
+}
+.list img{
+    margin-top: 60px;
+}
+.first li{
+    padding: 35px;
+list-style-type: none;
+}
+.second li{
+    padding: 15px;
+    list-style-type: none;
+}
+.socials a{
+    margin:30px;
+}
+
+.socials{
+    margin-top:-20px;
+
+}
+.third{
+  padding-top: 170px;
+    text-align:center;
+  margin-right: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.second{
+    margin-top: -90px;
+    padding-right:150px;
+    float:right;
+    text-decoration: none;
+}
+.second a {
+    text-decoration: none;
+   color: black;
+}
+
+.first{
+    margin-top: -100px;
+    padding-left: 100px;
+    float:left;
+    text-decoration: none;
+    font-family: nunito;
+}
+.email-adress{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  border: 2px solid black;
+  padding: 15px 25px;
+  border-radius: 5px;
+
+}
+
+

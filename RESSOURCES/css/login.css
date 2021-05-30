@@ -1,0 +1,118 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    height: 500px;
+}
+*{outline: none;}
+.tout{
+    display: flex;
+    flex-direction: row;
+}
+.logo img{
+     width: 100px;
+     height: auto;
+     padding: 10px;
+}
+.cote-form{
+    width:50%;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 60px;
+}
+.champs{
+    margin : 30px 0;
+}
+input{
+    margin: 10px 0;
+}
+.cote-form h1{
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.cote-form form{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.condition{
+    width: 500px;
+}
+a{
+    text-decoration: none;
+    color:#4FC3F7 ;
+}
+.cote-form input[type="text"],.cote-form input[type="password"],
+.cote-form input[type="email"] {
+    border:3px solid #4FC3F7;
+    border-radius: 30px;
+    padding: 14px 10px;
+    width: 350px;
+    transition: 0.35s;
+    font-size: 17px
+}
+.cote-form input[type="text"]:hover,.cote-form input[type="password"]:hover,
+.cote-form input[type="email"]:hover{
+
+transform: scale(1.01);
+}
+.cote-form input[type="submit"]{ 
+    border:3px solid #4FC3F7;
+    border-radius: 30px;
+    text-align: center;
+    padding: 14px 55px;
+    transition: 0.25s;
+    font-size: 17px;
+    background-color:#4FC3F7;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.cote-form input[type="submit"]:hover{
+   background-color: #90dcff;
+}
+::placeholder{
+    font-size: 18px;
+}
+.image{
+    width: 50%;
+    height: auto;
+    background-image: linear-gradient(#00abfa,#6ed0fd) ;
+}
+.reseaux{
+    margin: 20px;
+    display: flex;
+    flex-direction: row ;
+    justify-content: center;
+    align-items: center;
+}
+.reseaux a{
+    padding: 10px 20px;
+}
+.reseaux img{
+    width: 20px;
+    height: 20px;
+    margin: auto;
+    padding: 25px;
+}
+.google img:hover{
+    background-color: #DB4437;
+    border-radius: 40px;
+}
+.facebook img:hover{
+    background-color: #4267B2;
+    border-radius: 40px;
+}
+.linkedin img:hover{
+    background-color: #0a66c2;;
+    border-radius: 40px;
+}
+.twitter img:hover{ 
+    background-color: #00b5fd;
+    border-radius: 40px;
+}
+
+.image img{
+    height: 100vh;
+}
