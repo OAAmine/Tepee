@@ -16,6 +16,7 @@
 
 
     <?php
+    session_start();
     require('db.php');
     include('navbar.php');
 
@@ -24,7 +25,7 @@
     if (isset($_REQUEST['search'])) {
         $sql = "select * from cours where desc_cours like '%$search_value%'";
 
-        $res = $con->query($sql);
+        $res = $db->query($sql);
         while ($row = $res->fetch_assoc()) {
 
     ?>

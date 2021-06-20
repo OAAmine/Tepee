@@ -1,34 +1,69 @@
-td{
-    border: 2px black solid;
-    font-weight: bold;
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
-table{
-border-collapse: collapse;
-text-align: center;
-margin: 0 auto;
+
+.left_menu {
+    width: 20%;
 }
-.premiereligne {
-    background-color: cornflowerblue;
+
+.right_content {
+    width: 60%;
+    margin: auto;
 }
-.premierecolonne {
-    width: 400px;
+
+.cours_suivis,
+.cours_propose {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
 }
-tr{
-    height: 70px;
+
+.cours_suivis td,
+.cours_propose td,
+.cours_suivis th,
+.cours_propose th {
+    border: 1px solid #ddd;
+    padding: 8px;
 }
-.troisiemecolonne{
-    width: 120px;
+
+.cours_suivis tr:nth-child(even),
+.cours_propose tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
-.troisiemecolonne{
-    background-color: cornflowerblue;
+
+.cours_suivis tr:hover,
+.cours_propose tr:hover {
+    background-color: #ddd;
 }
-.troisiemecolonne:hover,
-.troisiemecolonne a:hover{
-    background-color: rgb(29, 104, 245);
-}
-.troisiemecolonne a{
-    text-transform: uppercase;
-    padding: 0 5px;
-    text-decoration: none;
+
+.cours_suivis th,
+.cours_propose th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
     color: white;
+}
+
+.ajouter_btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: blue;
+    cursor: pointer;
+}
+
+.ajouter_btn_text {
+    background-color: none;
+    border: none;
+}
+
+.add_icon {
+    font-size: 30px;
+}
+
+.ajouter_un_cours {
+    margin-top: 50px;
 }

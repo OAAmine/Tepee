@@ -11,7 +11,6 @@
 
 <body>
     <?php
-    session_start();
     // if (isset($_SESSION['email_etd'])) {
     //     echo '<li class="drpdwn"><a href="logout.php"><span>Log Out</span></a></li>';
     // } else {
@@ -41,23 +40,33 @@
             <input type="text" name="search">
         </form>
 
+
         <div class="sign_up_in">
-        <?php if ((isset($_SESSION['email_etd'])) || (isset($_SESSION['email_ens']))) { ?>
+        <?php if ((isset($_SESSION['email_etd']))) { ?>
             <div class="drpdwn compte">
                 <button class="drpbtn"> <a href="#"><img src="RESSOURCES/css/img/profil_placeholder.png" alt=""></a>
                     <i class="fsa fcd"></i>
                 </button>
                 <div class="drpdwn_cntnt">
-                    <a href="<?php if (isset($_SESSION['email_etd'])){echo ('profil_etudiant.php');}else{echo ('profil_enseignant.php');} ?>">Mon tableau de bord</a>
+                    <a href="<?php echo ('profil_etudiant.php') ?>">Mon tableau de bord</a>
                     <a href="logout.php">Déconnexion</a>
                 </div>
             </div>
             </div>  
-        <?php } else { ?>
+        <?php } else if  ((isset($_SESSION['email_ens']))) { ?>
+            <div class="drpdwn compte">
+                <button class="drpbtn"> <a href="#"><img src="RESSOURCES/css/img/profil_placeholder.png" alt=""></a>
+                    <i class="fsa fcd"></i>
+                </button>
+                <div class="drpdwn_cntnt">
+                    <a href="<?php echo ('profil_enseignant.php') ?>">Mon tableau de bord</a>
+                    <a href="logout.php">Déconnexion</a>
+                </div>
+            </div>
+            <?php } else { ?>
                 <a class="btn_connect" href="login.php">Se Connecter</a>
                 <a class="btn__ btn_inscrire" href="registration_etudiant.php">S'inscrire gratuitement</a>
-
-        <?php } ?>
+            <?php }?>
         </div>
 
     </nav>
