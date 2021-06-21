@@ -141,7 +141,7 @@ $nom_ens = stripslashes($_REQUEST['create']);
 
 if (empty($nom_ens)) {
     $errorMsg[] = "Entrez votre nom s'il vous plait";
-  } els
+  } else
 
 $title = $_GET['course_name'];
 $new_title = str_replace(' ', '_', $title);
