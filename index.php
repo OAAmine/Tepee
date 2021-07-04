@@ -17,6 +17,14 @@
     <?php
     session_start();
     include("navbar.php");
+
+    
+    // echo '<pre>';
+    // var_dump($_SESSION);
+    // echo '</pre>';
+    // echo("this is the id of the student" . $_SESSION["email_etd"]);
+    // echo("this is the id of the teacher" . $_SESSION["email_ens"]);
+
     ?>
 
     <header>
@@ -203,5 +211,7 @@
 <script src="VENDORS/js/swiper-bundle.js"></script>
 <script src="VENDORS/js/swiper-bundle.min.js"></script>
 <script src="RESSOURCES/js/script.js"></script>
+
+
 
 </html>

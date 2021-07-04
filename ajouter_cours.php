@@ -7,68 +7,13 @@
     <link rel="stylesheet" href="RESSOURCES/css/ajouter_cours.css">
     <script src="RESSOURCES/js/ajouter_cours.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="tinymce/js/tinymce/tinymce.min.js"></script>
-    <title>Course editor</title>
+    <title>course editor</title>
 </head>
 
 
 <?php
 session_start();
 require("db.php");
-
-$target_dir = "Cours/" . $_SESSION["email_ens"] . "/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-if (isset($_POST['creer_cours_btn'])) //button name "btn_register"
-{
-
-    // Check if image file is a actual image or fake image
-    if (isset($_POST["submit"])) {
-        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-        if ($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
-            $uploadOk = 1;
-        } else {
-            echo "File is not an image.";
-            $uploadOk = 0;
-        }
-    }
-
-    // Check if file already exists
-    if (file_exists($target_file)) {
-        echo "Sorry, file already exists.";
-        $uploadOk = 0;
-    }
-
-    // Check file size
-    if ($_FILES["fileToUpload"]["size"] > 500000) {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
-    }
-
-    // Allow certain file formats
-    if (
-        $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif"
-    ) {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        $uploadOk = 0;
-    }
-
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-        // if everything is ok, try to upload file
-    } else {
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
-        } else {
-            echo "Sorry, there was an error uploading your file.";
-        }
-    }
-
 
 
 
@@ -81,15 +26,11 @@ if (isset($_POST['creer_cours_btn'])) //button name "btn_register"
     $difficulte    = strip_tags($_REQUEST['difficulte']);
     $duree  = strip_tags($_REQUEST['duree']);
     $id_ens = $_SESSION["email_ens"];
-    $url_cours = "Cours/" . $id_ens . "/" . str_replace(' ', '_', $titre) . ".html";
-    $url_img = "Cours/" . $id_ens . "/" . basename($_FILES["fileToUpload"]["name"]);
+    //$url_cours = "cours/" . $id_ens . "/" . str_replace(' ', '_', $titre) . ".html";
+
+    $empty = "";
 
 
-
-    $new_titre = str_replace(' ', '_', $titre);
-    mkdir($_SERVER['DOCUMENT_ROOT'] . '/Cours/' . $_SESSION["email_ens"] . '/');
-    $createfile = fopen($_SERVER['DOCUMENT_ROOT'] . '/Cours/' . $_SESSION["email_ens"] . '/' . $new_titre . '.html', "w", true); // read only
-    chmod($_SERVER['DOCUMENT_ROOT'] . '/Cours/' . $new_titre . '.html', 0777);
 
     if (empty($titre)) {
         $errorMsg[] = "Entrez le titre du cours s'il vous plait";
@@ -105,7 +46,7 @@ if (isset($_POST['creer_cours_btn'])) //button name "btn_register"
         if (!isset($errorMsg)) //check no "$errorMsg" show then continue
         {
 
-            $stmt = $db->prepare("INSERT INTO courses (titre,categorie,description,difficulte,duree,id_ens,url_cours,url_image) VALUES
+            $stmt = $db->prepare("INSERT INTO courses (titre,categorie,description,difficulte,duree,id_ens,url_cours, url_image) VALUES
 																(:unom,:ucat,:udesc,:udiff,:uduree,:uid_ens,:uurl_cours,:uurl_img)");
             $stmt->bindParam(':unom', $titre);
             $stmt->bindParam(':ucat', $categorie);
@@ -113,15 +54,41 @@ if (isset($_POST['creer_cours_btn'])) //button name "btn_register"
             $stmt->bindParam(':udiff', $difficulte);
             $stmt->bindParam(':uduree', $duree);
             $stmt->bindParam(':uid_ens', $id_ens);
-            $stmt->bindParam(':uurl_cours', $url_cours);
-            $stmt->bindParam(':uurl_img', $url_img);
-            if ($stmt->execute()){
+            $stmt->bindParam(':uurl_cours', $empty);
+            $stmt->bindParam(':uurl_img', $empty);
+            if ($stmt->execute()) {
 
-            header("Location: $url_cours");  
-        }
+                $course_id =  $db->lastInsertId();
+                echo ($course_id );
+
+
+                $new_titre = str_replace(' ', '_', $titre);
+                $new_course_dir = $_SERVER['DOCUMENT_ROOT'] . '/cours/' . $course_id . '/';
+                $new_file_dir = $new_course_dir . $new_titre . ".php";
+
+                $header = "cours/".$course_id."/".$new_titre.'.php';
+
+                $url_img = $new_course_dir . basename($_FILES["fileToUpload"]["name"]);
+            }
+
+            $stmt_ii = $db->prepare("UPDATE courses SET url_cours = :uurl_cours ,url_image = :uurl_img WHERE id = :uid");
+            $stmt_ii->bindParam(':uurl_cours', $new_file_dir);
+            $stmt_ii->bindParam(':uurl_img', $url_img);
+            $stmt_ii->bindParam(':uid', $course_id);
+
+
+            if ($stmt_ii->execute()) {
+                echo ("success 2 ");
+                mkdir($new_course_dir);
+                $createfile = fopen($new_file_dir, "w", true); // read only
+                chmod($new_file_dir, 0777);
+                $include_html = '<?php include("' . $_SERVER['DOCUMENT_ROOT'].'/cours/cours_model.php'.'")?>';
+                file_put_contents($new_file_dir,$include_html);
+                header("Location: $header");
+            }
         }
     }
-}
+
 
 
 
@@ -160,7 +127,7 @@ if (isset($_POST['creer_cours_btn'])) //button name "btn_register"
         <form action="" method="post" name="creer_cours" enctype="multipart/form-data">
             <div class="inputs_no_submit">
                 <div class="inputs">
-                    <label for="titre">Titre du Cours</label>
+                    <label for="titre">Titre du cours</label>
                     <input type="text" name="titre" type="text" placeholder="Apprenez à créer un cours...">
 
                     <select id="categorie" name="categorie" type="text">

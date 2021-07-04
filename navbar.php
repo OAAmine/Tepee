@@ -19,7 +19,7 @@
     ?>
     <nav class="main_nav">
         <div class="logo_explore">
-            <a href="index.php"><img src="RESSOURCES/css/img/logo.png" alt="Logo"></a>
+            <a href="index.php"><img src="/RESSOURCES/css/img/logo.png" alt="Logo"></a>
             <div class="drpdwn">
                 <button class="btn__ drpbtn"><span>Catégories</span>
                     <i class="fsa fcd"></i>
@@ -44,7 +44,7 @@
         <div class="sign_up_in">
         <?php if ((isset($_SESSION['email_etd']))) { ?>
             <div class="drpdwn compte">
-                <button class="drpbtn"> <a href="#"><img src="RESSOURCES/css/img/profil_placeholder.png" alt=""></a>
+                <button class="drpbtn"> <a href="#"><img src="/RESSOURCES/css/img/profil_placeholder.png" alt=""></a>
                     <i class="fsa fcd"></i>
                 </button>
                 <div class="drpdwn_cntnt">
@@ -65,7 +65,7 @@
             </div>
             <?php } else { ?>
                 <a class="btn_connect" href="login.php">Se Connecter</a>
-                <a class="btn__ btn_inscrire" href="registration_etudiant.php">S'inscrire gratuitement</a>
+                <a class="btn__ btn_inscrire" href="registration.php">S'inscrire gratuitement</a>
             <?php }?>
         </div>
 

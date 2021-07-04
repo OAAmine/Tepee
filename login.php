@@ -45,9 +45,10 @@
 					{
 						if (password_verify($password, $row_etd["mdp_etd"])) //check condition user taypable "password" are match from database "password" using password_verify() after continue
 						{
-							$_SESSION["email_etd"] = $row["id_etd"];	//session name is "user_login"
+							$_SESSION["email_etd"] = $row_etd["id_etd"];	//session name is "user_login"
 							$loginMsg = "Successfully Login...";		//user login success message
 							header("refresh:2; index.php");			//refresh 2 second after redirect to "welcome.php" page
+							session_start();
 						} else {
 							$errorMsg[] = "wrong password";
 						}

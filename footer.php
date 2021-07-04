@@ -13,7 +13,7 @@
                     quisquam voluptates autem ab possimus aperiam voluptate a ipsum quasi,
                     harum, molestias sint laborum ullam quaerat iusto sit.
                 </p>
-                <img src="RESSOURCES/css/img/logo-placeholder.svg" alt="Logo">
+                <img src="/RESSOURCES/css/img/logo-placeholder.svg" alt="Logo">
             </div>
         </div>
 
@@ -84,7 +84,7 @@ body{
     footer {
         margin-top: 80px;
         padding-bottom: 20px;
-        background-image: url("RESSOURCES/css/img/footer-background.png");
+        background-image: url("/RESSOURCES/css/img/footer-background.png");
         background-repeat: no-repeat, repeat;
         background-size: cover;
         font-size: 15px;

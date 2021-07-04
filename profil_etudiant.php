@@ -10,8 +10,11 @@
 <body>
 <?php
     require('db.php');
-
     session_start();
+    if (isset($_SESSION["email_ens"]))	//check condition user login not direct back to index.php page
+	{
+		header("location: profil_etudiant.php");
+	}
     include("navbar.php");
     ?>
  <h1></h1>   

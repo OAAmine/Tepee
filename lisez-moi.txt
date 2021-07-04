@@ -1,7 +1,0 @@
-INSERT INTO cours VALUES (100,'test','test','test',2,2,3,'test','test');
-INSERT INTO enseignant_cours VALUES (3,100,'2021-04-15');
-
-
-enseignant qui a 2 cours dans la base de donnée : 
-email : j@j
-mdp : j

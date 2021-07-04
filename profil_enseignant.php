@@ -49,7 +49,14 @@ if (isset($_REQUEST['submit'])) {
     <?php
     session_start();
     require('db.php');
+    if (isset($_SESSION["email_etd"]))	//check condition user login not direct back to index.php page
+	{
+		header("location: profil_enseignant.php");
+	}
     include("navbar.php");
+
+
+
     ?>
 
     <div class="container">
@@ -123,6 +130,7 @@ if (isset($_REQUEST['submit'])) {
 
 
     <?php
+    include("ajouter_cours.php");
     include("footer.php");
     ?>
 
