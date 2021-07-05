@@ -130,7 +130,6 @@ if (isset($_REQUEST['submit'])) {
 
 
     <?php
-    include("ajouter_cours.php");
     include("footer.php");
     ?>
 
