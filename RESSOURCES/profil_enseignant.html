@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="profil.css" />
+    <title>Tableau de Bord</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="left_menu">
+            <h2>Mes Cours</h2>
+            <a href="#">cours proposé</a>
+            <a href="#">ajouter un cours</a>
+        </div>
+
+        <div class="right_content">
+            <h2>cours proposé</h2>
+            <table class="cours_propose">
+                <tr>
+                    <th>titre du cours </th>
+                    <th>date d'inscription</th>
+                    <th>en ligne</th>
+                </tr>
+                <tr>
+                    <td>biologie</td>
+                    <td>01/01/2021</td>
+                    <td>oui</td>
+                </tr>
+                <tr>
+                    <td>informatique</td>
+                    <td>02/05/2021</td>
+                    <td>oui</td>
+                </tr>
+                <tr>
+                    <td>architecture</td>
+                    <td>02/02/2020</td>
+                    <td>oui</td>
+                </tr>
+            </table>
+
+            <div class="ajouter_un_cours">
+                <a id="myButton" class="ajouter_btn" onclick="show_input()">
+                    <ion-icon class="add_icon" name="add-outline" href="#"></ion-icon>AJOUTER UN COURS
+                </a>
+
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+
+
+
+<script>
+    document.getElementById("myButton").onclick = function() {
+        location.href = "ajouter_cours.php";
+    };
+    /*
+    function show_input() {
+        var x = document.getElementById("cree_un_cours");
+        var y = document.getElementById("ajouter_btn")
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            y.style.display = "none";
+        }
+    }
+    */
+</script>   

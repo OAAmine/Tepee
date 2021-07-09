@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="parametres.css" />
+    <title>mon profil</title>
+
+</head>
+
+<body>
+    <div class="ensemble">
+        <form id="changeEmail">
+            <div class="content">
+                <h2 class="admin_title">Votre e-mail</h2>
+                <label autofocus="autofocus" class="labelformEmail required" for="change_email_current">Adresse e-mail
+                    actuelle</label>
+                <input type="email" id="change_email_current" name="change_email[current]" required="required" disabled="disabled" class="inputformEmail" value="..">
+                <label class="labelformEmail required" for="change_email_new">Nouvel e-mail</label>
+                <input type="email" id="change_email_new" name="change_email[new]" required="required" class="inputformEmail" value="Email">
+                <input type="hidden" id="change_email__token" name="change_email[_token]" value="Z0tpjaTKYRpP5RnI6bNSMjS2oYL1ZYVJdLYMYKrHeac">
+            </div>
+            <div class="envoyer">
+                <input type="submit" value="Envoyer" class="btn-primary admin_validation" name="email_validation_button">
+            </div>
+        </form>
+        <form id="changepass">
+            <div class="content">
+                <h2 class="admin_title">Changer votre mot de passe</h2>
+
+                <label autofocus="autofocus" class="labelformPassword required" for="changePassword_password">Ancien mot
+                    de
+                    passe</label>
+                <input type="password" id="changePassword_password" name="changePassword[password]" required="required" class="inputformPassword">
+                <label class="labelformPassword required" for="changePassword_newPassword_first">Nouveau mot de
+                    passe</label>
+                <input type="password" id="changePassword_newPassword_first" name="changePassword[newPassword][first]" required="required" class="inputformPassword">
+                <label autofocus="autofocus" class="labelformPassword required" for="changePassword_newPassword_second">Réécrire nouveau mot de passe</label>
+                <input type="password" id="changePassword_newPassword_second" name="changePassword[newPassword][second]" required="required" class="inputformPassword">
+                <div class="modifPasswordBtn">
+                    <input type="hidden" id="changePassword__token" name="changePassword[_token]" value="FGG9EIwSEy0jNT0JDT5nq11I_SernyA40Y8kfBnxnAM">
+                </div>
+            </div>
+            <div class="envoyer">
+                <input type="submit" value="Envoyer" class="btn-primary admin_validation" name="password_validation_button">
+            </div>
+        </form>
+        <div class="supprimermoncompte">
+            <h2 class="supprimer">Supprimer Votre Compte</h2>
+            <a class="jeveuxsupprimer" href="#">je veux supprimer mon compte</a>
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>

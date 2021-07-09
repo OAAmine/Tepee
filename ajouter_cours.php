@@ -12,6 +12,7 @@
 
 
 <?php
+
 session_start();
 require("db.php");
 
@@ -32,7 +33,6 @@ $id_ens = $_SESSION["email_ens"];
 $empty = "";
 
 
-
 if (empty($titre)) {
     $errorMsg[] = "Entrez le titre du cours s'il vous plait";
 } else if (empty($categorie)) {
@@ -46,6 +46,10 @@ if (empty($titre)) {
 } else {
     if (!isset($errorMsg)) //check no "$errorMsg" show then continue
     {
+
+
+
+
         $nb = 0;
         $stmt = $db->prepare("INSERT INTO courses (titre,categorie,description,difficulte,nb_chap,duree,id_ens,url_cours, url_image,est_en_ligne) VALUES
 																(:unom,:ucat,:udesc,:udiff,:uchap,:uduree,:uid_ens,:uurl_cours,:uurl_img,:uis_online)");
@@ -58,7 +62,7 @@ if (empty($titre)) {
         $stmt->bindParam(':uid_ens', $id_ens);
         $stmt->bindParam(':uurl_cours', $empty);
         $stmt->bindParam(':uurl_img', $empty);
-        $stmt->bindParam(':uis_online',$nb);
+        $stmt->bindParam(':uis_online', $nb);
         if ($stmt->execute()) {
 
             $course_id =  $db->lastInsertId();
@@ -67,6 +71,9 @@ if (empty($titre)) {
 
             $new_titre = str_replace(' ', '_', $titre);
             $new_course_dir = $_SERVER['DOCUMENT_ROOT'] . '/cours/' . $course_id . '/';
+            chmod($new_course_dir, 0777);
+
+
             $new_file_dir = $new_course_dir . $new_titre . ".php";
 
 
@@ -80,14 +87,24 @@ if (empty($titre)) {
         $stmt_ii->bindParam(':uurl_img', $url_img);
         $stmt_ii->bindParam(':uid', $course_id);
 
-
         if ($stmt_ii->execute()) {
-            echo ("success 2 ");
+            $stmt = $db->prepare("INSERT INTO enseignant_cours (id_ens,id_cours,date_creation) VALUES
+            (:uid_ens,:uid_cours,:udate_creation)");
+            $stmt->bindParam(':uid_ens', $id_ens);
+            $stmt->bindParam(':uid_cours', $course_id);
+            $stmt->bindParam(':udate_creation', date("Y/m/d"));
+            $stmt->execute();
+
             mkdir($new_course_dir);
             $createfile = fopen($new_file_dir, "w", true); // read only
+            for ($x = 0; $x <= $chap; $x++) {
+                $createfile = fopen($new_course_dir . $new_titre . '_' . $x . '.php', "w", true); // read only
+                chmod($new_course_dir . $new_titre . "_" . $x . ".php", 0777); //make it read/write
+            }
             chmod($new_file_dir, 0777);
 
-            $include_html = '<!DOCTYPE html>
+            $include_html = '
+                <!DOCTYPE html>
                 <html lang="en">
                 
                 <head>
@@ -142,6 +159,8 @@ if (empty($titre)) {
                 
                 
                     <?php
+
+                    
                     include("../../footer.php");
                     ?>
                 
@@ -194,26 +213,7 @@ if (empty($titre)) {
 ?>
 
 <body>
-    <h1>welcome to the course maker !</h1>
 
-    <?php
-    if (isset($errorMsg)) {
-        foreach ($errorMsg as $error) {
-    ?>
-            <div class="alert alert-danger">
-                <strong>WRONG ! <?php echo $error; ?></strong>
-            </div>
-        <?php
-        }
-    }
-    if (isset($registerMsg)) {
-        ?>
-        <div class="alert alert-success">
-            <strong><?php echo $registerMsg; ?></strong>
-        </div>
-    <?php
-    }
-    ?>
 
 
 
@@ -223,11 +223,20 @@ if (empty($titre)) {
             <img src="rendu.png" alt="">
         </div>
         <form action="" method="post" name="creer_cours" enctype="multipart/form-data">
+            <h1>Les informations de base sur votre formation</h1>
+
+
+
+
+
+
+
             <div class="inputs_no_submit">
                 <div class="inputs">
                     <label for="titre">Titre du cours</label>
                     <input type="text" name="titre" type="text" placeholder="Apprenez à créer un cours...">
 
+                    <label for="categorie">Categorie</label>
                     <select id="categorie" name="categorie" type="text">
                         <option selected disabled hidden>categorie</option>
                         <option value="informatique">informatique</option>
@@ -255,9 +264,9 @@ if (empty($titre)) {
                         <p>Heures</p>
                     </div>
                 </div>
-                <div class="upload_img">
-                    <input type="file" name="fileToUpload" id="fileToUpload">
-                </div>
+                <!-- <div class="upload_img">
+                        <input type="file" name="fileToUpload" id="fileToUpload">
+                    </div> -->
             </div>
             <input type="submit" value="submit" name="creer_cours_btn">
 

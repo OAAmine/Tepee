@@ -47,12 +47,13 @@ if (isset($_REQUEST['submit'])) {
 
 <body>
     <?php
+    
     session_start();
     require('db.php');
-    if (isset($_SESSION["email_etd"]))	//check condition user login not direct back to index.php page
-	{
-		header("location: profil_enseignant.php");
-	}
+    if (isset($_SESSION["email_etd"]))    //check condition user login not direct back to index.php page
+    {
+        header("location: profil_enseignant.php");
+    }
     include("navbar.php");
 
 
@@ -62,59 +63,34 @@ if (isset($_REQUEST['submit'])) {
     <div class="container">
 
         <div class="left_menu">
-            <a href="#">cours suivis</a>
+            <h2>Mes Cours</h2>
             <a href="#">cours proposé</a>
             <a href="#">ajouter un cours</a>
         </div>
 
         <div class="right_content">
-            <h1>bienvenue dans votre tableau de board @nom de user ajouter avec php</h1>
-            <h2>cours suivis</h2>
-
-            <table class="cours_suivis">
-                <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Age</th>
-                </tr>
-                <tr>
-                    <td>Jill</td>
-                    <td>Smith</td>
-                    <td>50</td>
-                </tr>
-                <tr>
-                    <td>Eve</td>
-                    <td>Jackson</td>
-                    <td>94</td>
-                </tr>
-                <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>80</td>
-                </tr>
-            </table>
-
             <h2>cours proposé</h2>
             <table class="cours_propose">
                 <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Age</th>
+                    <th>titre du cours </th>
+                    <th>date de publication</th>
+                    <th>en ligne</th>
                 </tr>
                 <tr>
-                    <td>Jill</td>
-                    <td>Smith</td>
-                    <td>50</td>
+                    <td>
+                        Apprenez à créer votre site web avec HTML5 et CSS3 </td>
+                    <td>01/01/2021</td>
+                    <td>oui</td>
                 </tr>
                 <tr>
-                    <td>Eve</td>
-                    <td>Jackson</td>
-                    <td>94</td>
+                    <td>Gérez un projet digital avec une méthodologie en cascade</td>
+                    <td>02/05/2021</td>
+                    <td>oui</td>
                 </tr>
                 <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>80</td>
+                    <td>Concevez votre site web avec PHP et MySQL</td>
+                    <td>02/02/2020</td>
+                    <td>oui</td>
                 </tr>
             </table>
 
@@ -127,7 +103,6 @@ if (isset($_REQUEST['submit'])) {
             </div>
         </div>
     </div>
-
 
     <?php
     include("footer.php");

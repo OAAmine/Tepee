@@ -6,7 +6,7 @@
     <title> parite cour</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../cours.css">
+    <link rel="stylesheet" href="cours.css">
     <link rel="stylesheet" href="master.css">
     <script src="https://kit.fontawesome.com/011613b7bc.js" crossorigin="anonymous"></script>
     <script src="RESSOURCES/js/pr-cour.js" crossorigin="anonymous"></script>
@@ -84,10 +84,10 @@
      <div class="titre">
         <h1>Initiez-vous au marketing digital</h1>
         <div class="specs">
-            <div><img src="RESSOURCES/css/img/duree.png" width="auto" height="22px" alt="">
+            <div><img src="../RESSOURCES/css/img/duree.png" width="auto" height="22px" alt="">
                 <p> 10 heures</p>
             </div>
-            <div><img src="RESSOURCES/css/img/diff.png" width="auto" height="22px" alt="">
+            <div><img src="../RESSOURCES/css/img/diff.png" width="auto" height="22px" alt="">
                 <p>Facile </p>
             </div>
         </div>
@@ -192,7 +192,7 @@
     <div class="teacher">
         <h4>Le professeur</h4>
         <div class="teacher_text">
-            <img src="RESSOURCES/css/img/teacher.jpg" alt="" width="100px" height="auto">
+            <img src="../RESSOURCES/css/img/teacher.jpg" alt="" width="100px" height="auto">
             <div>
                 <h5>Rodolphe Vonthron</h5>
                 <p>Expert en Communication et Marketing
@@ -201,40 +201,15 @@
             </div>
         </div>
     </div>
-<?php include("footer.php") ?>
-
-
-
-<h1>TinyMCE Quick Start Guide</h1>
-    <textarea id="myTextarea">Hello, World!</textarea>
-    <button onclick="myFunction()">Click me</button>
-</body>
+<?php include("../footer.php") ?>
 
 
 
 
 
-<script>
-        tinymce.init({
-            selector: '#myTextarea',
-            setup: function(editor) {
-                editor.on('init', function(e) {
-                    editor.setContent('<p>Hello loooooooooworld!</p>');
-                });
-            }
-        });
-
-
-        function myFunction() {
-            var x = document.getElementById("cours").innerHTML;
-            tinymce.get("myTextarea").setContent(x);
 
 
 
-            var myContent = tinymce.get("myTextarea").getContent();
-            alert(myContent);
-        }
-    </script>
 
 </html>
 

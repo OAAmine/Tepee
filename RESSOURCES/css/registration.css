@@ -1,215 +1,229 @@
 :root {
-  --input-border-color:rgba(87, 84, 236, 0.7);
-  --input-bg-color: rgb(255, 255, 255);
-  --input-placeholder-color: rgba(43, 43, 43, 0.8);
-  --input-label-color: rgba(87, 84, 236, 1);
+    --input-border-color: rgba(87, 84, 236, 0.7);
+    --input-bg-color: rgb(255, 255, 255);
+    --input-placeholder-color: rgba(43, 43, 43, 0.8);
+    --input-label-color: rgba(87, 84, 236, 1);
 }
 
 .field-container {
-  background-color: var(--input-bg-color);
-  position: relative;
-  border: 1px solid #bcbaba;
-  height: 50px;
-  width: 320px;
-  padding-left: 12px;
-  margin-top: 20px;
+    background-color: var(--input-bg-color);
+    position: relative;
+    border: 1px solid #bcbaba;
+    height: 50px;
+    width: 320px;
+    padding-left: 12px;
+    margin-top: 10px;
 }
 
-.condition label{
-  position: relative;
-  height: 50px;
-  margin-top: 20px;
+.condition label {
+    position: relative;
+    height: 50px;
+    margin-top: 20px;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    font-size: 110%;
 }
 
 .field-placeholder {
-  position: absolute;
-  top: 50%;
-  transform: translate(5px, -50%);
-  pointer-events: none;
-  transition: all 0.14s ease-in-out;
-  font-size: 18px;
-  color: #adadad;
+    position: absolute;
+    top: 50%;
+    transform: translate(5px, -50%);
+    pointer-events: none;
+    transition: all 0.14s ease-in-out;
+    font-size: 18px;
+    color: #adadad;
 }
 
-input[type=text].field-input,input[type=email].field-input,input[type=password].field-input {
-  background-color: var(--input-bg-color);
-  color: #000;
-  border: none;
-  padding: 5px;
-  margin-top: 20px;
-  font-size: 16px;
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  bottom: 0px;
+input[type=text].field-input,
+input[type=email].field-input,
+input[type=password].field-input {
+    background-color: var(--input-bg-color);
+    color: #000;
+    border: none;
+    padding: 5px;
+    margin-top: 20px;
+    font-size: 16px;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    bottom: 0px;
 }
-input[type=text].field-input:focus, input[type=email].field-input:focus, input[type=password].field-input:focus {
-  outline: none;
+
+input[type=text].field-input:focus,
+input[type=email].field-input:focus,
+input[type=password].field-input:focus {
+    outline: none;
 }
-input[type=text].field-input.c-fix, input[type=text].field-input:focus, input[type=text].field-input:not(:placeholder-shown),
-input[type=email].field-input.c-fix, input[type=email].field-input:focus, input[type=email].field-input:not(:placeholder-shown),
-input[type=password].field-input.c-fix, input[type=password].field-input:focus, input[type=password].field-input:not(:placeholder-shown) {
-  border-color: transparent;
+
+input[type=text].field-input.c-fix,
+input[type=text].field-input:focus,
+input[type=text].field-input:not(:placeholder-shown),
+input[type=email].field-input.c-fix,
+input[type=email].field-input:focus,
+input[type=email].field-input:not(:placeholder-shown),
+input[type=password].field-input.c-fix,
+input[type=password].field-input:focus,
+input[type=password].field-input:not(:placeholder-shown) {
+    border-color: transparent;
 }
-input[type=text].field-input.c-fix ~ label, input[type=text].field-input:focus ~ label, input[type=text].field-input:not(:placeholder-shown) ~ label,
-input[type=email].field-input.c-fix ~ label, input[type=email].field-input:focus ~ label, input[type=email].field-input:not(:placeholder-shown) ~ label,
-input[type=password].field-input.c-fix ~ label, input[type=password].field-input:focus ~ label, input[type=password].field-input:not(:placeholder-shown) ~ label {
-  color: #646669;
-  font-size: 11px;
-  top: calc(30% - .5rem);
-  transform: translate(5px, 0%);
+
+input[type=text].field-input.c-fix~label,
+input[type=text].field-input:focus~label,
+input[type=text].field-input:not(:placeholder-shown)~label,
+input[type=email].field-input.c-fix~label,
+input[type=email].field-input:focus~label,
+input[type=email].field-input:not(:placeholder-shown)~label,
+input[type=password].field-input.c-fix~label,
+input[type=password].field-input:focus~label,
+input[type=password].field-input:not(:placeholder-shown)~label {
+    color: #646669;
+    font-size: 11px;
+    top: calc(30% - .5rem);
+    transform: translate(5px, 0%);
 }
+
 input[type=text].field-input::-webkit-input-placeholder,
 input[type=email].field-input::-webkit-input-placeholder,
 input[type=password].field-input::-webkit-input-placeholder {
-  color: transparent;
+    color: transparent;
 }
+
 input[type=text].field-input::-moz-placeholder,
 input[type=email].field-input::-moz-placeholder,
 input[type=password].field-input::-moz-placeholder {
-  color: transparent;
+    color: transparent;
 }
+
 input[type=text].field-input:-ms-input-placeholder,
 input[type=email].field-input:-ms-input-placeholder,
 input[type=password].field-input:-ms-input-placeholder {
-  color: transparent;
+    color: transparent;
 }
-
 
 .split {
-  position: absolute;
-  width: 50%;
-  height: 100vh;
-  overflow: hidden;
+    position: absolute;
+    width: 50%;
+    height: 100vh;
+    overflow: hidden;
 }
-
 
 form {
-  opacity: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
 }
 
-
-
 nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 :root {
-  --left-bg-color: rgba(87, 84, 236, 0.7);
-  --right-bg-color: rgba(43, 43, 43, 0.8);
-  --left-btn-hover-color: rgba(87, 84, 236, 1);
-  --right-btn-hover-color: rgba(28, 122, 28, 1);
-
-  --hover-width: 75%;
-  --other-width: 25%;
-  --speed: 1000ms;
+    --left-bg-color: rgba(84, 236, 188, 0.7);
+    --right-bg-color: rgba(84, 236, 233, 0.7);
+    --left-btn-hover-color: rgba(87, 84, 236, 1);
+    --right-btn-hover-color: rgba(28, 122, 28, 1);
+    --hover-width: 75%;
+    --other-width: 25%;
+    --speed: 1000ms;
 }
 
-
-
 body {
-  font-family: 'Roboto', sans-serif;
-  height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
 }
 
 h1 {
-  left: 34%;
-  font-size: 4rem;
-  color: #fff;
-  position: relative;
+    left: 34%;
+    font-size: 4rem;
+    color: #fff;
+    position: relative;
 }
 
-
 .btn {
-  text-decoration: none;
-  color: #fff;
-  border: #fff solid 0.2rem;
-  font-size: 1rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  width: 15rem;
-  padding: 1.5rem;
+    text-decoration: none;
+    color: #fff;
+    border: #fff solid 0.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 15rem;
+    padding: 1.5rem;
+    background-color: var(--left-btn-hover-color);
 }
 
 .btn:hover {
-  background-color: var(--left-btn-hover-color);
-  border-color: var(--left-btn-hover-color);
+    background-color: gray;
+    border-color: var(--left-btn-hover-color);
 }
 
 .split.left {
-  left: 0;
-  background: url('student.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
+    left: 0;
+    background: url('student.svg');
+    background-repeat: no-repeat;
+    background-size: 1000px;
 }
 
 .split.left::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: var(--left-bg-color);
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--left-bg-color);
 }
 
 .split.right {
-  right: 0;
-  background: url('teacher.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
+    right: 0;
+    background: url('teacher.svg');
+    background-repeat: no-repeat;
+    background-size: 1000px;
 }
 
 .split.right::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: var(--right-bg-color);
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--right-bg-color);
 }
 
 .split.right,
 .split.left,
 .split.right::before,
-.split.left::before,form{
-  transition: all var(--speed) ease-in-out;
+.split.left::before,
+form {
+    transition: all var(--speed) ease-in-out;
 }
 
-.hover-left .form-etudiant{
-  opacity: 1;
+.hover-left .form-etudiant {
+    opacity: 1;
 }
 
-.hover-right .form-enseignant{
-  opacity: 1;
+.hover-right .form-enseignant {
+    opacity: 1;
 }
 
-
-
-.hover-left .left{
-  width: var(--hover-width);
+.hover-left .left {
+    width: var(--hover-width);
 }
-
 
 .hover-left .right {
-  width: var(--other-width);
-
+    width: var(--other-width);
 }
 
 .hover-right .right {
-  width: var(--hover-width);
-
+    width: var(--hover-width);
 }
 
 .hover-right .left {
-  width: var(--other-width);
+    width: var(--other-width);
 }

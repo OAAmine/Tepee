@@ -54,20 +54,18 @@
             <div class="description">
                 <img src="RESSOURCES/css/img/desc 1.svg" alt="">
                 <p>Créer un compte personnel<br>
-                    Choisissez vos cours<br>
-                    Suivez votre progrés</p>
+                    suivez des formation</p>
             </div>
             <div class="description">
                 <img src="RESSOURCES/css/img/desc 2.svg" alt="">
                 <p>Publier des cours<br>
-                    Gain a following<br>
-                    Get paid</p>
+                    Gagnez une audience</p>
             </div>
             <div class="description">
                 <img src="RESSOURCES/css/img/desc 3.svg" alt="">
                 <p>Obtenir une attestation<br>
                     Approuver par votre<br>
-                    Enseignant </p>
+                    Enseignant</p>
             </div>
         </div>
     </section>
@@ -203,7 +201,26 @@
         </div>
     </section>
 
-    <?php include("footer.php"); ?>
+
+
+    <?php
+    
+    
+
+
+
+
+    
+
+
+
+
+
+
+
+    
+    include("footer.php"); 
+    ?>
     <!---------------------------------------------------------------------------------------------------------------------------------------->
     <!---------------------------------------------------------------------------------------------------------------------------------------->
     <!---------------------------------------------------------------------------------------------------------------------------------------->

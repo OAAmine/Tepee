@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,10 +29,18 @@
             </div>
         </div>
 
-        <form class="recherche" action="search.php" method="post">
-            <input type="submit" name="submit">
-            <input type="text" name="search">
+
+
+        <form method="POST" action="search.php">
+            <div class="recherche">
+                <button type="submit" class="btn" name="search">Search</button>
+                <input type="text" class='search_input' type="search" class="form-control" name="keyword" value="<?php echo isset($_POST['keyword']) ? $_POST['keyword'] : '' ?>" placeholder="Search here..." required="" />
+            </div>
         </form>
+
+
+
+
 
 
         <div class="sign_up_in">
@@ -60,7 +67,7 @@
         </div>
     <?php } else { ?>
         <a class="btn_connect" href="login.php">Se Connecter</a>
-        <a class="btn__ btn_inscrire" href="registration_etudiant.php">S'inscrire gratuitement</a>
+        <a class="btn__ btn_inscrire" href="registration.php">S'inscrire gratuitement</a>
     <?php } ?>
     </div>
 
