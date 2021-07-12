@@ -1,1 +1,0 @@
-<?php include("/var/www/Tepee.com/html/cours/cours_model.php")?>

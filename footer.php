@@ -20,10 +20,10 @@
         <div class="right_side_footer">
             <div class="liens_utiles">
                 <h6>LIENS UTILES</h6>
-                <a href="#">Mon Compte</a>
-                <a href="#">Recherche</a>
-                <a href="#">Page d'acceuil</a>
-                <a href="#">Paramétres</a>
+                <a href="/profil_enseignant.php">Mon Compte</a>
+                <a href="/search.php">Recherche</a>
+                <a href="/index.php">Page d'acceuil</a>
+                <a href="/parametres.php">Paramétres</a>
             </div>
             <div class="aides">
                 <h6>aide</h6>
@@ -34,16 +34,16 @@
             </div>
             <div class="les_reseaux">
                 <h6>suivez-nous</h6>
-                <a href="#">
+                <a href="https://facebook.com">
                     <ion-icon class="logo_facebook" name="logo-facebook"></ion-icon>
                 </a>
-                <a href="#">
+                <a href="https://instagram.com">
                     <ion-icon class="logo_instagram" name="logo-instagram"></ion-icon>
                 </a><br>
-                <a href="#">
+                <a href="https://youtube.com">
                     <ion-icon class="logo_youtube" name="logo-youtube"></ion-icon>
                 </a>
-                <a href="#">
+                <a href="https://twitter.com">
                     <ion-icon class="logo_twitter" name="logo-twitter"></ion-icon>
                 </a>
             </div>

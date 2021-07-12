@@ -2,79 +2,79 @@
 <html>
 
 <head>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="RESSOURCES/css/profil.css" />
     <title>Tableau de Bord</title>
 </head>
 
 <body>
-<?php
-    require('db.php');
+    <?php
+
     session_start();
-    if (isset($_SESSION["email_ens"]))	//check condition user login not direct back to index.php page
-	{
-		header("location: profil_etudiant.php");
-	}
-    include("navbar.php");
-    ?>
- <h1></h1>   
-<h1>Cours suivie</h1>
-        <table>
-            <tr class="premiereligne">
-                <td class="premiercolonne">
-                    titre de cours
-                </td>
-                <td>
-                    <center>date d'inscription</center>
-                </td>
-                <td class="troisiemecolonne">
-                    continuer
-                </td>
-            </tr>
-
-
-
-        <?php
-
-    $current_user = $_SESSION['email_etd'];
-    // store the id of the current session user in a variable
-    $sql_etudiant = "SELECT id_etd FROM etudiant WHERE email_etd = '" . $current_user . "'";
-    $result_etudiant = mysqli_query($con, $sql_etudiant);
-    $rse = mysqli_fetch_array($result_etudiant);
-    //id de l'utilisateur de la session 
-    $etudiant_id = $rse['id_etd'];
-
-    $test_join = "SELECT cours.*,etudiant_cours.date_inscription FROM cours INNER JOIN etudiant_cours ON cours.id_cours = etudiant_cours.id_cours ORDER BY date_creation ASC";
-    $coursRes=mysqli_query($con,$test_join);
-   
-
-    // $test_join = "SELECT cours.*,etudiant_cours.date_inscription FROM cours INNER JOIN etudiant_cours ON etudiant_cours.id_etd = ? ORDER BY date_inscription ASC";
-    // bind_param("sss", $etudiant_id, $cours_id, $date);
-    // $coursRes=mysqli_query($con,$test_join);
-
-    // $stmt = $con->prepare("SELECT cours.*,etudiant_cours.date_inscription FROM cours INNER JOIN etudiant_cours ON etudiant_cours.id_etd = ? ORDER BY date_inscription ASC");
-    // $stmt->bind_param("sss", $etudiant_id);
-    // $stmt->execute();
-
-    while($build = mysqli_fetch_array($coursRes))
+    require('db.php');
+    if (isset($_SESSION["email_ens"]))    //check condition user login not direct back to index.php page
     {
-    
+        header("location: profil_enseignant.php");
+    }
+    include("navbar.php");
+
+
 
     ?>
-            <tr>
-                <td class="premierecolonne"><?php  echo($build["nom_cours"]);?></td>
-                <td>
-                    <center><?php  echo $build['date_inscription'];?></center>
-                </td>
-                <td class="troisiemecolonne">
-                    <center><a href="<?php  echo $build['url_cours'];?>">continuer</a></center>
-                </td>
-            </tr>
-    <?php } ;?> 
-    
-    </table>
-    <?php include("footer.php");?> 
+
+    <div class="container">
+
+
+
+        <div class="right_content">
+            <h2>cours suivis</h2>
+            <table class="cours_propose">
+
+                <tr>
+                    <th>titre du cours </th>
+                    <th>date d'inscription</th>
+                </tr>
+                <?php
+                
+                $result = $db->prepare("SELECT courses.*,etudiant_cours.* FROM etudiant_cours NATURAL JOIN courses WHERE id_etd = 1;");
+                $result->execute(array(":uid_etd" => $_SESSION['email_etd']));
+                $result->execute();
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                ?>
+                    <tr>
+                        <td><a href="<?php echo($row['url_cours']); ?>"> <?php echo ($row['titre']); ?> </td></a>
+                        <td><?php echo ($row['date_inscription']); ?></td>
+                    </tr>
+                <?php } ?>
+            </table>
+
+
+        </div>
+    </div>
+
+    <?php
+    include("footer.php");
+    ?>
 
 </body>
 
 </html>
+
+
+
+<script>
+    document.getElementById("myButton").onclick = function() {
+        location.href = "ajouter_cours.php";
+    };
+    /*
+    function show_input() {
+        var x = document.getElementById("cree_un_cours");
+        var y = document.getElementById("ajouter_btn")
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            y.style.display = "none";
+        }
+    }
+    */
+</script>

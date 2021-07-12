@@ -65,23 +65,29 @@
     // $date = date("Y-m-d");
     // //insert into table cours_etudiant when commencer is clicked
 
+    session_start();
+    require_once "../../db.php";
+    include("../../navbar.php");
 
 
-    // if (isset($_POST['nw_update'])) {
-    //     if ((isset($_SESSION['email_etd'])) || (isset($_SESSION['email_ens']))) {
-    //         $stmt = $con->prepare("INSERT INTO etudiant_cours (id_etd, id_cours, date_inscription) VALUES (?, ?, ?)");
-    //         $stmt->bind_param("sss", $etudiant_id, $cours_id, $date);
-    //         $stmt->execute();
-    //     } else {
-    //         header("Location: ../../login.php");
-    //     }
-    // }
+    $uri_path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+    $uri_segments = explode("/", $uri_path);
+    $course_id = $uri_segments[2];
+
+    if (isset($_REQUEST['submit'])) {
+        $stmt = $db->prepare("INSERT INTO etudiant_cours (id_etd,id_cours,date_inscription) VALUES
+        (:uid_etd,:uid_cours,:udate_inscription)");
+        $stmt->bindParam(':uid_etd', $_SESSION['id_etd']);
+        $stmt->bindParam(':uid_cours', $course_id);
+        $stmt->bindParam(':udate_inscription', date("Y/m/d"));
+        $stmt->execute();
+    }
 
 
 
 
     ?>
-     <div class="titre">
+    <div class="titre">
         <h1>Initiez-vous au marketing digital</h1>
         <div class="specs">
             <div><img src="../RESSOURCES/css/img/duree.png" width="auto" height="22px" alt="">
@@ -146,7 +152,7 @@
             <p> aucun !</p>
         </div>
 
-        <form class="comm" method="POST" action="">
+        <form class="comm" method="submit" action="">
             <input type="submit" name="nw_update" value="Commencer le cours !" />
         </form>
         <!-- <div class="comm">
@@ -155,37 +161,37 @@
     </section>
 
     <div class="sidenav">
-    <a href="#" class="debut">Table des matières</a>
-    <button class="dropdown-btn">
-      <i class="fas fa-book-reader">
-      </i>Partie 1 - Découvrez l'intérêt du marketing digital
-      et ses champs d'action
-      <span class="fa fa-chevron-right" aria-hidden="true"></span>
-    </button>
-    <div class="dropdown-container">
-      <a href="#">1. Ne confondez plus marketing et communication </a>
-      <a href="#">2. Découvrez l'écosystème du marketing digital </a>
-      <a href="#">3. Comparez le marketing digital et le marketing traditionnel </a>
-    </div><button class="dropdown-btn"><i class="fas fa-book-reader"></i>Partie 2 - Créez un plan marketing pour
-      atteindre vos objectifs
-      <span class="fa fa-chevron-right" aria-hidden="true"></span>
-    </button>
-    <div class="dropdown-container">
-      <a href="#">1. Planifiez vos actions pour augmenter vos résultats </a>
-      <a href="#">2. Clarifiez les objectifs de vos campagnes marketing </a>
-      <a href="#">3. Conduisez une étude de marché </a>
-      <a href="#">4. Élaborez une stratégie adaptée à votre offre </a>
+        <a href="#" class="debut">Table des matières</a>
+        <button class="dropdown-btn">
+            <i class="fas fa-book-reader">
+            </i>Partie 1 - Découvrez l'intérêt du marketing digital
+            et ses champs d'action
+            <span class="fa fa-chevron-right" aria-hidden="true"></span>
+        </button>
+        <div class="dropdown-container">
+            <a href="#">1. Ne confondez plus marketing et communication </a>
+            <a href="#">2. Découvrez l'écosystème du marketing digital </a>
+            <a href="#">3. Comparez le marketing digital et le marketing traditionnel </a>
+        </div><button class="dropdown-btn"><i class="fas fa-book-reader"></i>Partie 2 - Créez un plan marketing pour
+            atteindre vos objectifs
+            <span class="fa fa-chevron-right" aria-hidden="true"></span>
+        </button>
+        <div class="dropdown-container">
+            <a href="#">1. Planifiez vos actions pour augmenter vos résultats </a>
+            <a href="#">2. Clarifiez les objectifs de vos campagnes marketing </a>
+            <a href="#">3. Conduisez une étude de marché </a>
+            <a href="#">4. Élaborez une stratégie adaptée à votre offre </a>
 
-    </div><button class="dropdown-btn"><i class="fas fa-book-reader"></i>Partie 3 - Mesurez l'efficacité de vos actions
-      marketing
-      <span class="fa fa-chevron-right" aria-hidden="true"></span>
-    </button>
-    <div class="dropdown-container">
-      <a href="#">1. Gérez la relation client en ligne </a>
-      <a href="#"> 2. Attirez des visiteurs sur votre site Internet </a>
-      <a href="#"> 3. Transformez vos visiteurs en prospects </a>
-      <a href="#"> 4. Obtenez des ventes grâce à l'appel à action </a>
-    </div>
+        </div><button class="dropdown-btn"><i class="fas fa-book-reader"></i>Partie 3 - Mesurez l'efficacité de vos actions
+            marketing
+            <span class="fa fa-chevron-right" aria-hidden="true"></span>
+        </button>
+        <div class="dropdown-container">
+            <a href="#">1. Gérez la relation client en ligne </a>
+            <a href="#"> 2. Attirez des visiteurs sur votre site Internet </a>
+            <a href="#"> 3. Transformez vos visiteurs en prospects </a>
+            <a href="#"> 4. Obtenez des ventes grâce à l'appel à action </a>
+        </div>
 
     </div>
 
@@ -201,7 +207,7 @@
             </div>
         </div>
     </div>
-<?php include("../footer.php") ?>
+    <?php include("../footer.php") ?>
 
 
 
@@ -212,10 +218,3 @@
 
 
 </html>
-
-
-
-
-
-
-

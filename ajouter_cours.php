@@ -73,17 +73,17 @@ if (empty($titre)) {
             $new_course_dir = $_SERVER['DOCUMENT_ROOT'] . '/cours/' . $course_id . '/';
             chmod($new_course_dir, 0777);
 
-
+            
             $new_file_dir = $new_course_dir . $new_titre . ".php";
-
-
+            
+            $path_to_file = '/cours/'.$course_id .'/'.$new_titre . ".php";
             $header = "cours/cours_editeur.php?id=" . $course_id . "&nom=" . $new_titre . '.php';
 
             $url_img = $new_course_dir . basename($_FILES["fileToUpload"]["name"]);
         }
 
         $stmt_ii = $db->prepare("UPDATE courses SET url_cours = :uurl_cours ,url_image = :uurl_img WHERE id = :uid");
-        $stmt_ii->bindParam(':uurl_cours', $new_file_dir);
+        $stmt_ii->bindParam(':uurl_cours', $path_to_file);
         $stmt_ii->bindParam(':uurl_img', $url_img);
         $stmt_ii->bindParam(':uid', $course_id);
 
@@ -111,6 +111,8 @@ if (empty($titre)) {
                     <meta charset="UTF-8">
                     <meta http-equiv="X-UA-Compatible" content="IE=edge">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <link rel="stylesheet" href="../cours.css">
+
                     <title><?php $title = str_replace("_", " ", basename(__FILE__));
                             echo ($title);
                             ?></title>
@@ -125,6 +127,8 @@ if (empty($titre)) {
                     session_start();
                     require_once "../../db.php";
                     include("../../navbar.php");
+                    include("../cours_header.php");
+
                 
                 
                     $uri_path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
@@ -150,7 +154,7 @@ if (empty($titre)) {
                 
                 
                 
-                    <cours id="cours">
+                    <cours>
                 
                 
                     </cours>
@@ -172,6 +176,9 @@ if (empty($titre)) {
                 
                 
                 <style>
+                    body{
+                        
+                    }
                     .cours_du_ens {
                         display: block;
                         text-align: center;

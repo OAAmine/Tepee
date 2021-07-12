@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +20,7 @@
 <body>
     <nav class="main_nav">
         <div class="logo_explore">
-            <a href="index.php"><img src="/RESSOURCES/css/img/logo.png" alt="Logo"></a>
+            <a href="/index.php"><img src="/RESSOURCES/css/img/logo.png" alt="Logo"></a>
             <div class="drpdwn">
                 <button class="btn__ drpbtn"><span>Catégories</span>
                     <i class="fsa fcd"></i>
@@ -31,10 +38,10 @@
 
 
 
-        <form method="POST" action="search.php">
+        <form method="POST" action="/search.php">
             <div class="recherche">
                 <button type="submit" class="btn" name="search">Search</button>
-                <input type="text" class='search_input' type="search" class="form-control" name="keyword" value="<?php echo isset($_POST['keyword']) ? $_POST['keyword'] : '' ?>" placeholder="Search here..." required="" />
+                <input type="text" class='search_input' type="search" class="form-control" name="keyword" value="<?php echo isset($_POST['keyword']) ? $_POST['keyword'] : '' ?>" placeholder="chercher ici..." required="" />
             </div>
         </form>
 
@@ -50,8 +57,9 @@
                         <i class="fsa fcd"></i>
                     </button>
                     <div class="drpdwn_cntnt">
-                        <a href="<?php echo ('profil_etudiant.php') ?>">Mon tableau de bord</a>
-                        <a href="logout.php">Déconnexion</a>
+                        <a href="<?php echo ('/profil_etudiant.php') ?>">Mon tableau de bord</a>
+                        <a href="<?php echo ('/parametres.php') ?>">parametres</a>
+                        <a href="/logout.php">Déconnexion</a>
                     </div>
                 </div>
         </div>
@@ -61,13 +69,14 @@
                 <i class="fsa fcd"></i>
             </button>
             <div class="drpdwn_cntnt">
-                <a href="<?php echo ('profil_enseignant.php') ?>">Mon tableau de bord</a>
-                <a href="logout.php">Déconnexion</a>
+                <a href="<?php echo ('/profil_enseignant.php') ?>">Mon tableau de bord</a>
+                <a href="<?php echo ('/parametres.php') ?>">parametres</a>
+                <a href="/logout.php">Déconnexion</a>
             </div>
         </div>
     <?php } else { ?>
-        <a class="btn_connect" href="login.php">Se Connecter</a>
-        <a class="btn__ btn_inscrire" href="registration.php">S'inscrire gratuitement</a>
+        <a class="btn_connect" href="/login.php">Se Connecter</a>
+        <a class="btn__ btn_inscrire" href="/registration.php">S'inscrire gratuitement</a>
     <?php } ?>
     </div>
 

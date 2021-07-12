@@ -42,9 +42,10 @@ if (isset($_REQUEST['register_etd_btn'])) //button name "btn_register"
         ':uemail'  => $email,
         ':upassword' => $new_password
       ))) {
-        $registerMsg = "Register Successfully..... "; //execute query success message
+        $registerMsg = "Compte crée avec succès..... "; //execute query success message
         $_SESSION["email_etd"] = $row["id_etd"];  //session name is "user_login"
-        header("refresh:2; index.php");      //refresh 2 second after redirect to "welcome.php" page
+        session_start();
+        header("refresh:2; login.php");      //refresh 2 second after redirect to "welcome.php" page
       }
     }
   }
@@ -88,7 +89,8 @@ if (isset($_REQUEST['register_etd_btn'])) //button name "btn_register"
       ))) {
         $registerMsg = "Register Successfully..... "; //execute query success message
         $_SESSION["email_ens"] = $row["id_ens"];  //session name is "user_login"
-        header("refresh:2; index.php");      //refresh 2 second after redirect to "welcome.php" page
+        session_start();
+        header("refresh:2; login.php");      //refresh 2 second after redirect to "welcome.php" page
       }
     }
   }
@@ -121,7 +123,7 @@ if (isset($_REQUEST['register_etd_btn'])) //button name "btn_register"
         foreach ($errorMsg as $error) {
       ?>
           <div class="alert alert-danger">
-            <strong>WRONG ! <?php echo $error; ?></strong>
+            <strong>FAUX ! <?php echo $error; ?></strong>
           </div>
         <?php
         }
@@ -171,6 +173,15 @@ if (isset($_REQUEST['register_etd_btn'])) //button name "btn_register"
     </div>
 
 
+    <style>
+      strong {
+        left: 25%;
+        color: red;
+        position: relative;
+      }
+    </style>
+
+
 
 
 
@@ -196,7 +207,7 @@ if (isset($_REQUEST['register_etd_btn'])) //button name "btn_register"
         foreach ($errorMsg as $error) {
       ?>
           <div class="alert alert-danger">
-            <strong>WRONG ! <?php echo $error; ?></strong>
+            <strong>FAUX ! <?php echo $error; ?></strong>
           </div>
         <?php
         }

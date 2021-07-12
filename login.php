@@ -46,7 +46,7 @@
 						if (password_verify($password, $row_etd["mdp_etd"])) //check condition user taypable "password" are match from database "password" using password_verify() after continue
 						{
 							$_SESSION["email_etd"] = $row_etd["id_etd"];	//session name is "user_login"
-							$loginMsg = "Successfully Login...";		//user login success message
+							$loginMsg = "connection avec succès...";		//user login success message
 							header("refresh:2; index.php");			//refresh 2 second after redirect to "welcome.php" page
 							session_start();
 						} else {
@@ -87,27 +87,27 @@
 			<a href="index.php"><img src="RESSOURCES/css/img/logo.png" alt="img logo"></a>
 		</div>
 		<div class="cote-form">
-			<?php
-			if (isset($errorMsg)) {
-				foreach ($errorMsg as $error) {
-			?>
-					<div class="alert alert-danger">
-						<strong><?php echo $error; ?></strong>
+
+			<form class="form" method="post" name="login">
+				<h1>Se connecter</h1>
+				<?php
+				if (isset($errorMsg)) {
+					foreach ($errorMsg as $error) {
+				?>
+						<div class="alert alert-danger">
+							<strong><?php echo $error; ?></strong>
+						</div>
+					<?php
+					}
+				}
+				if (isset($loginMsg)) {
+					?>
+					<div class="alert alert-success">
+						<strong><?php echo $loginMsg; ?></strong>
 					</div>
 				<?php
 				}
-			}
-			if (isset($loginMsg)) {
 				?>
-				<div class="alert alert-success">
-					<strong><?php echo $loginMsg; ?></strong>
-				</div>
-			<?php
-			}
-			?>
-			<form class="form" method="post" name="login">
-				<h1>Se connecter</h1>
-
 				<div class="champs">
 					<input type="text" class="login-input" name="email" placeholder="Email" autofocus="true" />
 					<input type="password" class="login-input" name="mdp" placeholder="Mot de passe" />
@@ -115,7 +115,7 @@
 
 				<br>
 				<input type="submit" value="Login" name="submit" class="login-button" />
-				<p>Vous n'avez pas encore de compte ? <a href="registration_etudiant.php">Inscrivez-vous gratuitement</a> </p>
+				<p>Vous n'avez pas encore de compte ? <a href="registration.php">Inscrivez-vous gratuitement</a> </p>
 			</form>
 
 
@@ -129,3 +129,10 @@
 </body>
 
 </html>
+
+<style>
+	strong {
+		color: red;
+		position: relative;
+	}
+</style>

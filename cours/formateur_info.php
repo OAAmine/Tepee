@@ -27,13 +27,11 @@
 
     $ens = array();
 
-    $result = $db->prepare("SELECT * FROM enseignant_cours,enseignant WHERE enseignant_cours.id_cours =:uid_cours");
-    $result->execute(array(":uid_cours" => $course_id));
-    $result->execute();
-    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-        echo($row['nom_ens']);
-        //$ens[] = $row['id_ens'];
-    }
+
+
+
+
+
 
 
 
@@ -44,7 +42,20 @@
     //         $var = $ligne['nom_ens'];
     // }
 
+    // $query = $db->prepare("SELECT * FROM courses WHERE titre LIKE '%$keyword%' or description LIKE '%$keyword%' or categorie LIKE '%$keyword%'");
+    // $query->execute();
 
+    // while ($row = $query->fetch()) {
+
+
+
+
+    $result = $db->prepare("SELECT enseignant.* FROM enseignant_cours NATURAL JOIN enseignant WHERE id_cours = :uid_cours");
+    $result->execute(array(":uid_cours" => $course_id));
+    $result->execute();
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+    
 
     ?>
     <div class="teacher">
@@ -52,13 +63,13 @@
         <div class="teacher_text">
             <img src="RESSOURCES/css/img/teacher.jpg" alt="" width="100px" height="auto">
             <div>
-                <h5>Rodolphe Vonthron</h5>
-                <p>Expert en Communication et Marketing
-                    Digital avec un parcours de 20 ans Agences
-                    &amp; annonceurs au service de marques. </p>
+                <h5><?php echo ($row['nom_ens']) ?></h5>
+                <p><?php echo ($row['prenom_ens']) ?> </p>
             </div>
         </div>
     </div>
+
+    <?php } ?>
 </body>
 
 </html>
@@ -70,7 +81,6 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        margin-top: 80px;
         padding: 0 20%;
     }
 

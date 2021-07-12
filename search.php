@@ -25,6 +25,7 @@
 
             <body>
                 <?php
+                session_start();
                 $keyword = $_POST['keyword'];
                 $query = $db->prepare("SELECT * FROM courses WHERE titre LIKE '%$keyword%' or description LIKE '%$keyword%' or categorie LIKE '%$keyword%'");
                 $query->execute();

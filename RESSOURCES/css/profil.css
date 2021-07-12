@@ -1,3 +1,12 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: blue;
+}
+
 .container {
     display: flex;
     flex-direction: row;

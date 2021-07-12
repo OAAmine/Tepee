@@ -58,6 +58,13 @@ h2 {
     padding: 8px;
 }
 
+.ajouter_collab {
+    border: none;
+    color: blue;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .cours_propose tr:nth-child(even) {
     background-color: #f2f2f2;
 }
